@@ -69,7 +69,7 @@
             color: white;
             margin-top: 40px;
         }
-        input[type='email'] {
+        input[type='email'], input[type='text'], select {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -112,6 +112,11 @@
             </ul>
             <p class="price" id="hostingPlusPrice">25.99 PLN / month</p>
             <input type="email" id="plusEmail" placeholder="Enter your email">
+            <select id="plusOption">
+                <option value="IPv4">Dedicated IPv4 Address</option>
+                <option value="Domain">Domain</option>
+            </select>
+            <input type="text" id="domainName" placeholder="Enter your domain name (without extension)" style="display:none;">
             <button onclick="submitEmail('Plus')">Get Started</button>
         </div>
     </div>
@@ -144,6 +149,17 @@
 
     updatePrice();
 
+    const plusOption = document.getElementById('plusOption');
+    const domainInput = document.getElementById('domainName');
+
+    plusOption.addEventListener('change', () => {
+        if (plusOption.value === 'Domain') {
+            domainInput.style.display = 'block';
+        } else {
+            domainInput.style.display = 'none';
+        }
+    });
+
     function submitEmail(plan) {
         let email = plan === 'Free' ? document.getElementById('freeEmail').value : document.getElementById('plusEmail').value;
         if (!email) {
@@ -151,7 +167,21 @@
             return;
         }
 
-        const webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL';
+        let extraInfo = '';
+        if (plan === 'Plus') {
+            if (plusOption.value === 'Domain') {
+                let domain = domainInput.value.trim();
+                if (!domain) {
+                    alert('Please enter your domain name.');
+                    return;
+                }
+                extraInfo = ` - Domain chosen: ${domain}.xyz`;
+            } else {
+                extraInfo = ' - Dedicated IPv4 Address chosen';
+            }
+        }
+
+        const webhookUrl = 'https://discord.com/api/webhooks/1449811008381124660/sQomQtOSyznD23I2ZMVXEEYASjSjskGH5bytkmOywjT9WPdoZlhHXaQgNi4qSfomkeEx';
 
         fetch(webhookUrl, {
             method: 'POST',
@@ -159,7 +189,7 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                content: `New ${plan} sign-up: ${email}`
+                content: `New ${plan} sign-up: ${email}${extraInfo}`
             })
         })
         .then(response => {
@@ -175,7 +205,12 @@
         });
 
         if (plan === 'Free') document.getElementById('freeEmail').value = '';
-        else document.getElementById('plusEmail').value = '';
+        else {
+            document.getElementById('plusEmail').value = '';
+            domainInput.value = '';
+            plusOption.value = 'IPv4';
+            domainInput.style.display = 'none';
+        }
     }
 </script>
 
