@@ -1,166 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lucid Hosting</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --primary: #6d7cff;
-  --secondary: #0f1220;
-  --bg: #0b0d17;
-  --card: #15192d;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --accent: #22d3ee;
+:root{
+  --primary:#6d7cff;
+  --accent:#22d3ee;
+  --bg:#0b0d17;
+  --card:#15192d;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
 }
-
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#11142a,#05060d);
+  color:var(--text);
 }
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #11142a, #05060d);
-  color: var(--text);
+header{
+  padding:80px 20px;
+  text-align:center;
 }
-
-header {
-  padding: 80px 20px 60px;
-  text-align: center;
+header h1{font-size:3rem;margin:0}
+header p{color:var(--muted)}
+.container{max-width:1200px;margin:auto;padding:20px}
+.plans{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
 }
-
-header h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+.card{
+  background:linear-gradient(180deg,#1b2040,var(--card));
+  border-radius:20px;
+  padding:30px;
+  position:relative;
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
 }
-
-header p {
-  color: var(--muted);
-  max-width: 600px;
-  margin: auto;
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.05),transparent);
+  pointer-events:none;
 }
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+.badge{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:var(--accent);
+  color:#000;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
 }
-
-.plans {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
+ul{list-style:none;padding:0;margin:20px 0}
+ul li{color:var(--muted);padding:6px 0}
+.price{font-size:2rem;font-weight:700;margin:20px 0}
+input,select,button{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  margin:8px 0;
+  background:#0c1022;
+  border:1px solid #2a2f55;
+  color:white;
 }
-
-.card {
-  background: linear-gradient(180deg, #1b2040, var(--card));
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 20px 50px rgba(0,0,0,.6);
-  position: relative;
-  overflow: hidden;
+button{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  border:none;
+  font-weight:700;
+  cursor:pointer;
 }
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,.05), transparent);
-  opacity: .4;
-  pointer-events: none; /* THIS FIXES EVERYTHING */
+.subdomain{
+  display:flex;
+  gap:6px;
+  align-items:center;
 }
-
-
-.card h2 {
-  margin-top: 0;
-  font-size: 1.8rem;
-}
-
-.badge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: var(--accent);
-  color: #000;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
-ul li {
-  padding: 8px 0;
-  color: var(--muted);
-}
-
-.price {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 20px 0;
-}
-
-form label {
-  font-size: 14px;
-  color: var(--muted);
-}
-
-input, select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 6px;
-  margin-bottom: 14px;
-  background: #0c1022;
-  border: 1px solid #2a2f55;
-  border-radius: 10px;
-  color: white;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: .9;
-}
-
-.subdomain {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.subdomain span {
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.note {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-footer {
-  margin-top: 80px;
-  padding: 30px;
-  text-align: center;
-  color: var(--muted);
+.subdomain span{font-weight:600}
+.note{font-size:12px;color:var(--muted)}
+footer{
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
 }
 </style>
 </head>
@@ -169,205 +97,186 @@ footer {
 
 <header>
   <h1>Lucid Hosting</h1>
-  <p>High-performance Minecraft servers powered by AMD EPYC, built for creators, communities, and friends.</p>
+  <p>High-performance Minecraft servers powered by AMD EPYC</p>
 </header>
 
 <div class="container">
-  <div class="plans">
+<div class="plans">
 
-    <!-- FREE -->
-    <div class="card">
-      <div class="badge">FREE</div>
-      <h2>Lucid Free</h2>
-      <ul>
-        <li>20 Player Slots</li>
-        <li>2GB RAM</li>
-        <li>5GB NVMe Storage</li>
-        <li>Shared AMD EPYC CPU</li>
-      </ul>
-      <div class="price">$0 / mo</div>
-      <form action="https://formspree.io/f/xkgdeqkq" method="POST">
-        <input type="hidden" name="plan" value="Free" />
-        <label>Email</label>
-        <input type="email" name="email" required />
-        <button type="submit">Create Free Server</button>
-      </form>
+<!-- CARD TEMPLATE -->
+<div class="card">
+  <div class="badge">FREE</div>
+  <h2>Lucid Free</h2>
+  <ul>
+    <li>20 Player Slots</li>
+    <li>2GB RAM</li>
+    <li>5GB NVMe</li>
+  </ul>
+  <div class="price">$0 / mo</div>
+  <form action="https://formspree.io/f/xkgdeqkq" method="POST">
+    <input type="hidden" name="plan" value="Free">
+    <input type="email" name="email" placeholder="Email" required>
+    <button type="submit">Create Free Server</button>
+  </form>
+</div>
+
+<!-- LUCID PLUS -->
+<div class="card">
+  <div class="badge">POPULAR</div>
+  <h2>Lucid+</h2>
+  <ul>
+    <li>5GB RAM</li>
+    <li>25GB NVMe</li>
+    <li>DDoS Protection</li>
+  </ul>
+  <div class="price">25.99 PLN / mo</div>
+  <form class="hosting-form" action="https://formspree.io/f/xkgdeqkq" method="POST">
+    <input type="hidden" name="plan" value="Lucid+">
+    <input type="hidden" name="extra" class="extra">
+
+    <input type="email" name="email" placeholder="Email" required>
+
+    <select class="option">
+      <option value="IPv4">Dedicated IPv4</option>
+      <option value="Domain">Paid Domain</option>
+      <option value="Subdomain">Free .run.place Subdomain</option>
+    </select>
+
+    <div class="subBox" style="display:none">
+      <label>Subdomain (name only)</label>
+      <div class="subdomain">
+        <input class="subInput" placeholder="myserver">
+        <span>.run.place</span>
+      </div>
     </div>
 
-    <!-- PLUS -->
-    <div class="card">
-      <div class="badge">POPULAR</div>
-      <h2>Lucid+</h2>
-      <ul>
-        <li>5GB RAM</li>
-        <li>25GB NVMe Storage</li>
-        <li>Advanced DDoS Protection</li>
-        <li>IPv4, Domain or Free Subdomain</li>
-      </ul>
-      <div class="price" id="price">25.99 PLN / mo</div>
-
-      <form id="plusForm" action="https://formspree.io/f/xkgdeqkq" method="POST">
-        <input type="hidden" name="plan" value="Lucid+" />
-        <input type="hidden" name="extra" id="extra" />
-
-        <label>Email</label>
-        <input type="email" name="email" required />
-
-        <label>Connection Option</label>
-        <select id="option">
-          <option value="IPv4">Dedicated IPv4</option>
-          <option value="Domain">Paid Domain</option>
-          <option value="Subdomain">Free .run.place Subdomain</option>
-        </select>
-
-        <div id="subBox" style="display:none">
-          <label>Subdomain name (name only)</label>
-          <div class="subdomain">
-            <input id="sub" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
-            <span>.run.place</span>
-          </div>
-          <div class="note">3–20 characters · letters, numbers, hyphens</div>
-        </div>
-
-        <div id="Domainbox" style="display:none">
-          <label>Domain name</label>
-          <label>Extension prices eg. .xyz, .dev etc. may vary!</label>
-          <div class="domain">
-            <input id="domain" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
-          </div>
-          <div class="note">3–20 characters · letters, numbers, hyphens</div>
-        </div>
-
-        <button type="submit">Deploy Server</button>
-      </form>
+    <div class="domainBox" style="display:none">
+      <label>Domain</label>
+      <input class="domainInput" placeholder="example.xyz">
     </div>
 
-      <div class="card">
-      <div class="badge">BEST FOR MEDIUM SIZE SERVERS<div>
-      <h2>Lucid Optimal</h2>
-      <ul>
-        <li>20 GB RAM</li>
-        <li>150GB NVMe Storage</li>
-        <li>Advanced DDoS Protection</li>
-        <li>IPv4, Paid Domain or Free Subdomain</li>
-      </ul>
-      <div class="price" id="price">99.99 PLN / mo</div>
+    <button type="submit">Deploy Server</button>
+  </form>
+</div>
 
-      <form id="plusForm" action="https://formspree.io/f/xkgdeqkq" method="POST">
-        <input type="hidden" name="plan" value="Lucid+" />
-        <input type="hidden" name="extra" id="extra" />
+<!-- OPTIMAL -->
+<div class="card">
+  <div class="badge">MEDIUM</div>
+  <h2>Lucid Optimal</h2>
+  <ul>
+    <li>20GB RAM</li>
+    <li>150GB NVMe</li>
+    <li>DDoS Protection</li>
+  </ul>
+  <div class="price">99.99 PLN / mo</div>
 
-        <label>Email</label>
-        <input type="email" name="email" required />
+  <form class="hosting-form" action="https://formspree.io/f/xkgdeqkq" method="POST">
+    <input type="hidden" name="plan" value="Lucid Optimal">
+    <input type="hidden" name="extra" class="extra">
 
-        <label>Connection Option</label>
-        <select id="option">
-          <option value="IPv4">Dedicated IPv4</option>
-          <option value="Domain">Paid Domain</option>
-          <option value="Subdomain">Free .run.place Subdomain</option>
-        </select>
+    <input type="email" name="email" placeholder="Email" required>
 
-        <div id="subBox" style="display:none">
-          <label>Subdomain name (name only)</label>
-          <div class="subdomain">
-            <input id="sub" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
-            <span>.run.place</span>
-          </div>
-          <div class="note">3–20 characters · letters, numbers, hyphens</div>
-        </div>
+    <select class="option">
+      <option value="IPv4">Dedicated IPv4</option>
+      <option value="Domain">Paid Domain</option>
+      <option value="Subdomain">Free .run.place Subdomain</option>
+    </select>
 
-        <div id="Domainbox" style="display:none">
-          <label>Domain name</label>
-          <label>Extension prices eg. .xyz, .dev etc. may vary!</label>
-          <div class="domain">
-            <input id="domain" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
-          </div>
-          <div class="note">3–20 characters · letters, numbers, hyphens</div>
-        </div>
-
-        <button type="submit">Deploy Server</button>
-      </form>
+    <div class="subBox" style="display:none">
+      <div class="subdomain">
+        <input class="subInput" placeholder="myserver">
+        <span>.run.place</span>
+      </div>
     </div>
 
-        <div class="card">
-      <div class="badge">BEST FOR LARGE SERVERS<div>
-      <h2>Lucid Premium</h2>
-      <ul>
-        <li>40 GB RAM</li>
-        <li>275GB NVMe Storage</li>
-        <li>Advanced DDoS Protection</li>
-        <li>IPv4, Paid Domain or Free Subdomain</li>
-      </ul>
-      <div class="price" id="price">189.99 PLN / mo</div>
-
-      <form id="plusForm" action="https://formspree.io/f/xkgdeqkq" method="POST">
-        <input type="hidden" name="plan" value="Lucid+" />
-        <input type="hidden" name="extra" id="extra" />
-
-        <label>Email</label>
-        <input type="email" name="email" required />
-
-        <label>Connection Option</label>
-        <select id="option">
-          <option value="IPv4">Dedicated IPv4</option>
-          <option value="Domain">Paid Domain</option>
-          <option value="Subdomain">Free .run.place Subdomain</option>
-        </select>
-
-        <div id="subBox" style="display:none">
-          <label>Subdomain name (name only)</label>
-          <div class="subdomain">
-            <input id="sub" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
-            <span>.run.place</span>
-          </div>
-          <div class="note">3–20 characters · letters, numbers, hyphens</div>
-        </div>
-
-        <div id="Domainbox" style="display:none">
-          <label>Domain name</label>
-          <label>Extension prices eg. .xyz, .dev etc. may vary!</label>
-          <div class="domain">
-            <input id="domain" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
-          </div>
-          <div class="note">3–20 characters · letters, numbers, hyphens</div>
-        </div>
-
-        <button type="submit">Deploy Server</button>
-      </form>
+    <div class="domainBox" style="display:none">
+      <input class="domainInput" placeholder="example.xyz">
     </div>
 
-  </div>
+    <button type="submit">Deploy Server</button>
+  </form>
+</div>
+
+<!-- PREMIUM -->
+<div class="card">
+  <div class="badge">LARGE</div>
+  <h2>Lucid Premium</h2>
+  <ul>
+    <li>40GB RAM</li>
+    <li>275GB NVMe</li>
+    <li>Advanced DDoS</li>
+  </ul>
+  <div class="price">189.99 PLN / mo</div>
+
+  <form class="hosting-form" action="https://formspree.io/f/xkgdeqkq" method="POST">
+    <input type="hidden" name="plan" value="Lucid Premium">
+    <input type="hidden" name="extra" class="extra">
+
+    <input type="email" name="email" placeholder="Email" required>
+
+    <select class="option">
+      <option value="IPv4">Dedicated IPv4</option>
+      <option value="Domain">Paid Domain</option>
+      <option value="Subdomain">Free .run.place Subdomain</option>
+    </select>
+
+    <div class="subBox" style="display:none">
+      <div class="subdomain">
+        <input class="subInput" placeholder="myserver">
+        <span>.run.place</span>
+      </div>
+    </div>
+
+    <div class="domainBox" style="display:none">
+      <input class="domainInput" placeholder="example.xyz">
+    </div>
+
+    <button type="submit">Deploy Server</button>
+  </form>
+</div>
+
+</div>
 </div>
 
 <footer>
-  © 2025 Lucid Hosting · Built for Minecraft
+© 2025 Lucid Hosting
 </footer>
 
 <script>
-const option = document.getElementById('option');
-const subBox = document.getElementById('subBox');
-const sub = document.getElementById('sub');
-const extra = document.getElementById('extra');
+document.querySelectorAll('.hosting-form').forEach(form => {
+  const option = form.querySelector('.option');
+  const subBox = form.querySelector('.subBox');
+  const domainBox = form.querySelector('.domainBox');
+  const subInput = form.querySelector('.subInput');
+  const domainInput = form.querySelector('.domainInput');
+  const extra = form.querySelector('.extra');
 
-option.addEventListener('change', () => {
-  subBox.style.display = option.value === 'Subdomain' ? 'block' : 'none';
-});
+  option.addEventListener('change', () => {
+    subBox.style.display = option.value === 'Subdomain' ? 'block' : 'none';
+    domainBox.style.display = option.value === 'Domain' ? 'block' : 'none';
+  });
 
-option.addEventListener('change', () => {
-  Domainbox.style.display = option.value === 'Domain' ? 'block' : 'none';
-});
-
-document.getElementById('plusForm').addEventListener('submit', e => {
-  if (option.value === 'Subdomain') {
-    if (!sub.value.trim()) {
-      alert('Please choose a subdomain name');
-      e.preventDefault();
-      return;
+  form.addEventListener('submit', e => {
+    if (option.value === 'Subdomain') {
+      if (!subInput.value.trim()) {
+        alert('Please enter a subdomain name');
+        e.preventDefault();
+        return;
+      }
+      extra.value = `Free subdomain: ${subInput.value}.run.place`;
+    } 
+    else if (option.value === 'Domain') {
+      if (!domainInput.value.trim()) {
+        alert('Please enter a domain');
+        e.preventDefault();
+        return;
+      }
+      extra.value = `Domain: ${domainInput.value}`;
+    } 
+    else {
+      extra.value = 'Dedicated IPv4';
     }
-    extra.value = `Free subdomain: ${sub.value}.run.place`;
-  } else {
-    extra.value = 'Dedicated IPv4';
-  }
+  });
 });
 </script>
 
