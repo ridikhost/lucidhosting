@@ -202,7 +202,7 @@ footer {
         <li>5GB RAM</li>
         <li>25GB NVMe Storage</li>
         <li>Advanced DDoS Protection</li>
-        <li>IPv4 or Free Subdomain</li>
+        <li>IPv4, Domain or Free Subdomain</li>
       </ul>
       <div class="price" id="price">25.99 PLN / mo</div>
 
@@ -230,7 +230,101 @@ footer {
         </div>
 
         <div id="Domainbox" style="display:none">
-          <label>Domain name (name only)</label>
+          <label>Domain name</label>
+          <label>Extension prices eg. .xyz, .dev etc. may vary!</label>
+          <div class="domain">
+            <input id="domain" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
+          </div>
+          <div class="note">3–20 characters · letters, numbers, hyphens</div>
+        </div>
+
+        <button type="submit">Deploy Server</button>
+      </form>
+    </div>
+
+      <div class="card">
+      <div class="badge">BEST FOR MEDIUM SIZE SERVERS<div>
+      <h2>Lucid Optimal</h2>
+      <ul>
+        <li>20 GB RAM</li>
+        <li>150GB NVMe Storage</li>
+        <li>Advanced DDoS Protection</li>
+        <li>IPv4, Paid Domain or Free Subdomain</li>
+      </ul>
+      <div class="price" id="price">99.99 PLN / mo</div>
+
+      <form id="plusForm" action="https://formspree.io/f/xkgdeqkq" method="POST">
+        <input type="hidden" name="plan" value="Lucid+" />
+        <input type="hidden" name="extra" id="extra" />
+
+        <label>Email</label>
+        <input type="email" name="email" required />
+
+        <label>Connection Option</label>
+        <select id="option">
+          <option value="IPv4">Dedicated IPv4</option>
+          <option value="Domain">Paid Domain</option>
+          <option value="Subdomain">Free .run.place Subdomain</option>
+        </select>
+
+        <div id="subBox" style="display:none">
+          <label>Subdomain name (name only)</label>
+          <div class="subdomain">
+            <input id="sub" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
+            <span>.run.place</span>
+          </div>
+          <div class="note">3–20 characters · letters, numbers, hyphens</div>
+        </div>
+
+        <div id="Domainbox" style="display:none">
+          <label>Domain name</label>
+          <label>Extension prices eg. .xyz, .dev etc. may vary!</label>
+          <div class="domain">
+            <input id="domain" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
+          </div>
+          <div class="note">3–20 characters · letters, numbers, hyphens</div>
+        </div>
+
+        <button type="submit">Deploy Server</button>
+      </form>
+    </div>
+
+        <div class="card">
+      <div class="badge">BEST FOR LARGE SERVERS<div>
+      <h2>Lucid Premium</h2>
+      <ul>
+        <li>40 GB RAM</li>
+        <li>275GB NVMe Storage</li>
+        <li>Advanced DDoS Protection</li>
+        <li>IPv4, Paid Domain or Free Subdomain</li>
+      </ul>
+      <div class="price" id="price">189.99 PLN / mo</div>
+
+      <form id="plusForm" action="https://formspree.io/f/xkgdeqkq" method="POST">
+        <input type="hidden" name="plan" value="Lucid+" />
+        <input type="hidden" name="extra" id="extra" />
+
+        <label>Email</label>
+        <input type="email" name="email" required />
+
+        <label>Connection Option</label>
+        <select id="option">
+          <option value="IPv4">Dedicated IPv4</option>
+          <option value="Domain">Paid Domain</option>
+          <option value="Subdomain">Free .run.place Subdomain</option>
+        </select>
+
+        <div id="subBox" style="display:none">
+          <label>Subdomain name (name only)</label>
+          <div class="subdomain">
+            <input id="sub" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
+            <span>.run.place</span>
+          </div>
+          <div class="note">3–20 characters · letters, numbers, hyphens</div>
+        </div>
+
+        <div id="Domainbox" style="display:none">
+          <label>Domain name</label>
           <label>Extension prices eg. .xyz, .dev etc. may vary!</label>
           <div class="domain">
             <input id="domain" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
