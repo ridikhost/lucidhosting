@@ -65,14 +65,15 @@ header p {
   position: relative;
   overflow: hidden;
 }
-
 .card::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(120deg, transparent, rgba(255,255,255,.05), transparent);
   opacity: .4;
+  pointer-events: none; /* THIS FIXES EVERYTHING */
 }
+
 
 .card h2 {
   margin-top: 0;
