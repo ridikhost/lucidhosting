@@ -77,7 +77,7 @@
                     </select>
                 </label>
                 <label id="domainLabel" style="display:none;">
-                    Domain Name (without extension):
+                    Domain Name Extension pricing varies (e.g., .xyz, .dev):
                     <input type="text" id="domainName" placeholder="example" >
                 </label>
                 <button type="submit">Get Started</button>
@@ -129,7 +129,7 @@ plusForm.addEventListener('submit', function(e) {
             e.preventDefault();
             return;
         }
-        extraInfoField.value = `Domain chosen: ${domain}.xyz`;
+        extraInfoField.value = `Domain chosen: ${domain}`;
     } else {
         extraInfoField.value = 'Dedicated IPv4 Address chosen';
     }
