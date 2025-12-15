@@ -216,6 +216,7 @@ footer {
         <label>Connection Option</label>
         <select id="option">
           <option value="IPv4">Dedicated IPv4</option>
+          <option value="Domain">Paid Domain</option>
           <option value="Subdomain">Free .run.place Subdomain</option>
         </select>
 
@@ -224,6 +225,15 @@ footer {
           <div class="subdomain">
             <input id="sub" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
             <span>.run.place</span>
+          </div>
+          <div class="note">3–20 characters · letters, numbers, hyphens</div>
+        </div>
+
+        <div id="Domainbox" style="display:none">
+          <label>Domain name (name only)</label>
+          <label>Extension prices eg. .xyz, .dev etc. may vary!</label>
+          <div class="domain">
+            <input id="domain" placeholder="myserver" pattern="[a-zA-Z0-9-]{3,20}" />
           </div>
           <div class="note">3–20 characters · letters, numbers, hyphens</div>
         </div>
@@ -247,6 +257,10 @@ const extra = document.getElementById('extra');
 
 option.addEventListener('change', () => {
   subBox.style.display = option.value === 'Subdomain' ? 'block' : 'none';
+});
+
+option.addEventListener('change', () => {
+  Domainbox.style.display = option.value === 'Domain' ? 'block' : 'none';
 });
 
 document.getElementById('plusForm').addEventListener('submit', e => {
